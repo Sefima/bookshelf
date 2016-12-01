@@ -1,4 +1,5 @@
 # [bookshelf.js](http://bookshelfjs.org)
+# [bookshelf.js](http://bookshelfjs.org)
 
 
 [![Build Status](https://travis-ci.org/tgriesser/bookshelf.svg?branch=master)](https://travis-ci.org/tgriesser/bookshelf) 

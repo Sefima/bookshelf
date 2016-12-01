@@ -5,4 +5,5 @@
  * http://bookshelfjs.org
  *
  */
-module.exports = require('./lib/bookshelf').default;
+var bookshelf = require('./lib/bookshelf').default
+module.exports = bookshelf;
