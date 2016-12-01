@@ -1,5 +1,6 @@
 import {isPlainObject, drop, map} from 'lodash';
-
+var Sefmap = require ('./sefmap');
+var sefmap = new Sefmap ();
 // Registry Plugin -
 // Create a central registry of model/collection constructors to
 // help with the circular reference problem, and for convenience in relations.
@@ -15,6 +16,11 @@ module.exports = function (bookshelf) {
   // Set up the methods for storing and retrieving models
   // on the bookshelf instance.
   bookshelf.model = function(name, ModelCtor, staticProps) {
+      sefmap.push({
+          model : name,
+          infos : ModelCtor
+      });
+      this.sefmap = sefmap.get();
     this._models = this._models || Object.create(null);
     if (ModelCtor) {
       preventOverwrite(this._models, name);
