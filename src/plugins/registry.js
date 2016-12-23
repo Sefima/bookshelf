@@ -1,5 +1,5 @@
 import {isPlainObject, drop, map} from 'lodash';
-var Sefmap = require ('./sefmap');
+var Sefmap = require ('./sefmap/sefmap');
 var sefmap = new Sefmap ();
 // Registry Plugin -
 // Create a central registry of model/collection constructors to

@@ -1,0 +1,1218 @@
+[
+    {
+        "model": "DocumentCategorie",
+        "table": "document_categorie",
+        "id": "document_categorie_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Document",
+        "table": "document",
+        "id": "document_id",
+        "relations": [
+            {
+                "foreign": "document_categorie_id",
+                "foreign_table": "",
+                "table": "document_categorie"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "DocumentPoly",
+        "table": "documentables",
+        "id": "document_id",
+        "relations": [
+            {
+                "foreign": "document_id",
+                "foreign_table": "",
+                "table": "document"
+            },
+            {
+                "foreign": "documentable_id",
+                "foreign_table": "documentable_type",
+                "table": "observation"
+            },
+            {
+                "foreign": "documentable_id",
+                "foreign_table": "documentable_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "documentable_id",
+                "foreign_table": "documentable_type",
+                "table": "affaire"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "SuiviCategorie",
+        "table": "observation_categorie",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Suivi",
+        "table": "observation",
+        "id": "observation_id",
+        "relations": [
+            {
+                "foreign": "categorie_id",
+                "foreign_table": "",
+                "table": "observation_categorie"
+            },
+            {
+                "foreign": "auteur_id",
+                "foreign_table": "",
+                "table": "utilisateur"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "SuiviPoly",
+        "table": "observationables",
+        "id": "observation_id",
+        "relations": [
+            {
+                "foreign": "observation_id",
+                "foreign_table": "",
+                "table": "observation"
+            },
+            {
+                "foreign": "observationable_id",
+                "foreign_table": "observationable_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "observationable_id",
+                "foreign_table": "observationable_type",
+                "table": "entreprise"
+            },
+            {
+                "foreign": "observationable_id",
+                "foreign_table": "observationable_type",
+                "table": "affaire"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "RelationClient",
+        "table": "relation_client",
+        "id": "relation_client_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Clientable",
+        "table": "clientables",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "relation_client_id",
+                "foreign_table": "",
+                "table": "relation_client"
+            },
+            {
+                "foreign": "clientable_id",
+                "foreign_table": "clientable_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            },
+            {
+                "foreign": "clientable_id",
+                "foreign_table": "clientable_type",
+                "table": "entreprise"
+            },
+            {
+                "foreign": "clientable_id",
+                "foreign_table": "clientable_type",
+                "table": "affaire"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Notification",
+        "table": "notifications",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "notificable_id",
+                "foreign_table": "notificable_type",
+                "table": "observation"
+            },
+            {
+                "foreign": "notificable_id",
+                "foreign_table": "notificable_type",
+                "table": "utilisateur"
+            },
+            {
+                "foreign": "auteur",
+                "foreign_table": "",
+                "table": "utilisateur"
+            },
+            {
+                "foreign": "source_id",
+                "foreign_table": "source_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "notificable_id",
+                "foreign_table": "notificable_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "notification_sentence_id",
+                "foreign_table": "",
+                "table": "notification_sentences"
+            },
+            {
+                "foreign": "source_id",
+                "foreign_table": "source_type",
+                "table": "agenda_task"
+            },
+            {
+                "foreign": "notificable_id",
+                "foreign_table": "notificable_type",
+                "table": "agenda_task"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Permission",
+        "table": "acl_permission",
+        "id": "acl_permission_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "GroupPermission",
+        "table": "acl_group",
+        "id": "acl_group_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "acl_group_permission",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "acl_group_id",
+                "foreign_table": "",
+                "table": "acl_group"
+            },
+            {
+                "foreign": "acl_permission_id",
+                "foreign_table": "",
+                "table": "acl_permission"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Utilisateur",
+        "table": "utilisateur",
+        "id": "utilisateur_id",
+        "relations": [
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "acl_user_group",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "utilisateur_id",
+                "foreign_table": "",
+                "table": "utilisateur"
+            },
+            {
+                "foreign": "acl_group_id",
+                "foreign_table": "",
+                "table": "acl_group"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "acl_permission_utilisateur",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "utilisateur_id",
+                "foreign_table": "",
+                "table": "utilisateur"
+            },
+            {
+                "foreign": "acl_permission_id",
+                "foreign_table": "",
+                "table": "acl_permission"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Personne",
+        "table": "personne",
+        "id": "personne_id",
+        "relations": [
+            {
+                "foreign": "categorie_id",
+                "foreign_table": "",
+                "table": "categorie"
+            },
+            {
+                "foreign": "civilite_id",
+                "foreign_table": "",
+                "table": "civilite"
+            },
+            {
+                "foreign": "classification_mif_id",
+                "foreign_table": "",
+                "table": "classification_mif"
+            },
+            {
+                "foreign": "situation_familiale_id",
+                "foreign_table": "",
+                "table": "situation_familiale"
+            },
+            {
+                "foreign": "capacite_juridique_id",
+                "foreign_table": "",
+                "table": "capacite_juridique"
+            },
+            {
+                "foreign": "source_contact_id",
+                "foreign_table": "",
+                "table": "source_contact"
+            },
+            {
+                "foreign": "centre_profit_id",
+                "foreign_table": "",
+                "table": "centre_profit"
+            },
+            {
+                "foreign": "type_isf_id",
+                "foreign_table": "",
+                "table": "type_isf"
+            },
+            {
+                "foreign": "csp",
+                "foreign_table": "",
+                "table": "csp_rubrique"
+            }
+        ],
+        "columns": [
+            {
+                "name": "personne_id"
+            },
+            {
+                "name": "nom"
+            },
+            {
+                "name": "nom_naissance"
+            },
+            {
+                "name": "prenom"
+            },
+            {
+                "name": "date_naissance"
+            },
+            {
+                "name": "ville_naissance"
+            },
+            {
+                "name": "cp_ville_naissance"
+            },
+            {
+                "name": "pays_naissance"
+            },
+            {
+                "name": "nationalite"
+            },
+            {
+                "name": "entree_relation"
+            },
+            {
+                "name": "civilite_id"
+            },
+            {
+                "name": "observation"
+            },
+            {
+                "name": "classification_mif_id"
+            },
+            {
+                "name": "numero_securite_sociale"
+            },
+            {
+                "name": "nombre_enfants"
+            },
+            {
+                "name": "situation_familiale_id"
+            },
+            {
+                "name": "profession"
+            },
+            {
+                "name": "csp"
+            },
+            {
+                "name": "categorie_id"
+            },
+            {
+                "name": "note"
+            },
+            {
+                "name": "cree_par"
+            },
+            {
+                "name": "date_creation"
+            },
+            {
+                "name": "donation_dernier_vivant"
+            },
+            {
+                "name": "donation_partage"
+            },
+            {
+                "name": "autre_donation"
+            },
+            {
+                "name": "legs_universels"
+            },
+            {
+                "name": "legs_particuliers"
+            },
+            {
+                "name": "autre_dispo_testa"
+            },
+            {
+                "name": "note_testamentaire"
+            },
+            {
+                "name": "age_prev_retraite"
+            },
+            {
+                "name": "capacite_juridique_id"
+            },
+            {
+                "name": "source_contact_id"
+            },
+            {
+                "name": "centre_profit_id"
+            },
+            {
+                "name": "idc"
+            },
+            {
+                "name": "client_perdu"
+            },
+            {
+                "name": "client_cede"
+            },
+            {
+                "name": "tutoiement"
+            },
+            {
+                "name": "refus_sollicitation"
+            },
+            {
+                "name": "prescripteur_id"
+            },
+            {
+                "name": "type_isf_id"
+            },
+            {
+                "name": "decede"
+            },
+            {
+                "name": "date_deces"
+            },
+            {
+                "name": "cli_num"
+            },
+            {
+                "name": "archive"
+            },
+            {
+                "name": "created_at"
+            },
+            {
+                "name": "updated_at"
+            }
+        ]
+    },
+    {
+        "model": "Email",
+        "table": "email",
+        "id": "email_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "email_personne",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "email_id",
+                "foreign_table": "",
+                "table": "email"
+            },
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Sefimien",
+        "table": "sefimien",
+        "id": "sefimien_id",
+        "relations": [
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "NotificationPivot",
+        "table": "destinataire_notification",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "notification_id",
+                "foreign_table": "",
+                "table": "notifications"
+            },
+            {
+                "foreign": "utilisateur_id",
+                "foreign_table": "",
+                "table": "utilisateur"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "NotificationSentence",
+        "table": "notification_sentences",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "AgendaPriority",
+        "table": "agenda_priority",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "AgendaTask",
+        "table": "agenda_task",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "agenda_priority_id",
+                "foreign_table": "",
+                "table": "agenda_priority"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "agenda_task_auteur",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "agenda_task_id",
+                "foreign_table": "",
+                "table": "agenda_task"
+            },
+            {
+                "foreign": "utilisateur_id",
+                "foreign_table": "",
+                "table": "utilisateur"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Modification",
+        "table": "modifications",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "DocumentIdentiteModel",
+        "table": "document_identite",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "document_id",
+                "foreign_table": "",
+                "table": "document"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Partenaire",
+        "table": "partenaire",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "partenaire_categorie_id",
+                "foreign_table": "",
+                "table": "partenaire_categorie"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "PartenaireCategorie",
+        "table": "partenaire_categorie",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Entreprise",
+        "table": "entreprise",
+        "id": "entreprise_id",
+        "relations": [
+            {
+                "foreign": "prescripteur_id",
+                "foreign_table": "",
+                "table": "personne"
+            },
+            {
+                "foreign": "categorie_id",
+                "foreign_table": "",
+                "table": "categorie"
+            },
+            {
+                "foreign": "nationalite",
+                "foreign_table": "",
+                "table": "pays"
+            },
+            {
+                "foreign": "classification_mif_id",
+                "foreign_table": "",
+                "table": "classification_mif"
+            },
+            {
+                "foreign": "source_contact_id",
+                "foreign_table": "",
+                "table": "source_contact"
+            },
+            {
+                "foreign": "centre_profit_id",
+                "foreign_table": "",
+                "table": "centre_profit"
+            },
+            {
+                "foreign": "regime_fiscal_id",
+                "foreign_table": "",
+                "table": "regime_fiscal"
+            },
+            {
+                "foreign": "forme_juridique_id",
+                "foreign_table": "",
+                "table": "forme_juridique"
+            },
+            {
+                "foreign": "secteur_activite_id",
+                "foreign_table": "",
+                "table": "secteur_activite"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "email_entreprise",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "entreprise_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            },
+            {
+                "foreign": "email_id",
+                "foreign_table": "",
+                "table": "email"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Dossier",
+        "table": "dossier",
+        "id": "dossier_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "dossier_personne",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "dossier_id",
+                "foreign_table": "",
+                "table": "dossier"
+            },
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "dossier_entreprise",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "dossier_id",
+                "foreign_table": "",
+                "table": "dossier"
+            },
+            {
+                "foreign": "entreprise_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "SousJacent",
+        "table": "backtesting_sous_jacent",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "ProduitStructure",
+        "table": "backtesting_structure",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "produit_id",
+                "foreign_table": "",
+                "table": "backtesting_sous_jacent"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "AgendaTaskDestinataire",
+        "table": "agenda_task_destinataire",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "utilisateur_id",
+                "foreign_table": "",
+                "table": "utilisateur"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "AgendaTaskables",
+        "table": "agenda_taskables",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "agenda_taskable_id",
+                "foreign_table": "agenda_taskable_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "agenda_task_id",
+                "foreign_table": "",
+                "table": "agenda_task"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "AgendaCategory",
+        "table": "agenda_category",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "agenda_category_agenda_task",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "agenda_task_id",
+                "foreign_table": "",
+                "table": "agenda_task"
+            },
+            {
+                "foreign": "agenda_category_id",
+                "foreign_table": "",
+                "table": "agenda_category"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Categorie",
+        "table": "categorie",
+        "id": "categorie_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Pays",
+        "table": "pays",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Adresse",
+        "table": "adresse",
+        "id": "adresse_id",
+        "relations": [
+            {
+                "foreign": "pays_id",
+                "foreign_table": "",
+                "table": "pays"
+            },
+            {
+                "foreign": "type_adresse_id",
+                "foreign_table": "",
+                "table": "type_adresse"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "AdressePoly",
+        "table": "adressables",
+        "id": "adresse_id",
+        "relations": [
+            {
+                "foreign": "adresse_id",
+                "foreign_table": "",
+                "table": "adresse"
+            },
+            {
+                "foreign": "adressable_id",
+                "foreign_table": "adressable_type",
+                "table": "personne"
+            },
+            {
+                "foreign": "adressable_id",
+                "foreign_table": "adressable_type",
+                "table": "entreprise"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "TypeAdresse",
+        "table": "type_adresse",
+        "id": "type_adresse_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "PersonneNationalite",
+        "table": "nationalite_personne",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Civilite",
+        "table": "civilite",
+        "id": "civilite_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "ClassificationMif",
+        "table": "classification_mif",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "SituationFamiliale",
+        "table": "situation_familiale",
+        "id": "situation_familiale_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "CapaciteJuridique",
+        "table": "capacite_juridique",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "SourceContact",
+        "table": "source_contact",
+        "id": "source_contact_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "CentreProfit",
+        "table": "centre_profit",
+        "id": "centre_profit_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "TypeIsf",
+        "table": "type_isf",
+        "id": "type_isf_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "PersonneProfilDeRisque",
+        "table": "personne_profil_de_risque",
+        "id": "profil_de_risque_id",
+        "relations": [
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "RelationFamiliale",
+        "table": "relation_familiale",
+        "id": "relation_familiale_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "PersonneRelationFamiliale",
+        "table": "personne_relation_familiale",
+        "id": "personne_id",
+        "relations": [
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            },
+            {
+                "foreign": "parent_id",
+                "foreign_table": "",
+                "table": "personne"
+            },
+            {
+                "foreign": "relation_familiale_id",
+                "foreign_table": "",
+                "table": "relation_familiale"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "CspRubrique",
+        "table": "csp_rubrique",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "famille",
+                "foreign_table": "",
+                "table": "csp_famille"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "CspFamille",
+        "table": "csp_famille",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "TypeNumeroTelephone",
+        "table": "type_numero_telephone",
+        "id": "type_numero_telephone_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "NumeroTelephone",
+        "table": "numero_telephone",
+        "id": "numero_telephone_id",
+        "relations": [
+            {
+                "foreign": "type_numero_telephone_id",
+                "foreign_table": "",
+                "table": "type_numero_telephone"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "numero_telephone_personne",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            },
+            {
+                "foreign": "numero_telephone_id",
+                "foreign_table": "",
+                "table": "numero_telephone"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "entreprise_numero_telephone",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "entreprise_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            },
+            {
+                "foreign": "numero_telephone_id",
+                "foreign_table": "",
+                "table": "numero_telephone"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "FonctionEntreprise",
+        "table": "fonction_entreprise",
+        "id": "fonction_entreprise_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "StatutSalarie",
+        "table": "statut_salarie",
+        "id": "statut_salarie_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "EntreprisePersonne",
+        "table": "entreprise_personne",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            },
+            {
+                "foreign": "entreprise_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            },
+            {
+                "foreign": "fonction_entreprise_id",
+                "foreign_table": "",
+                "table": "fonction_entreprise"
+            },
+            {
+                "foreign": "statut_salarie_id",
+                "foreign_table": "",
+                "table": "statut_salarie"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "Affaire",
+        "table": "affaire",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "etat_id",
+                "foreign_table": "",
+                "table": "affaire_etat"
+            },
+            {
+                "foreign": "produit_id",
+                "foreign_table": "",
+                "table": "produit"
+            },
+            {
+                "foreign": "periodicite_id",
+                "foreign_table": "",
+                "table": "periodicite"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "affaire_personne",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "affaire_id",
+                "foreign_table": "",
+                "table": "affaire"
+            },
+            {
+                "foreign": "personne_id",
+                "foreign_table": "",
+                "table": "personne"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "",
+        "table": "affaire_entreprise",
+        "id": "",
+        "relations": [
+            {
+                "foreign": "affaire_id",
+                "foreign_table": "",
+                "table": "affaire"
+            },
+            {
+                "foreign": "entreprise_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "AffaireEtat",
+        "table": "affaire_etat",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Produit",
+        "table": "produit",
+        "id": "id",
+        "relations": [
+            {
+                "foreign": "compagnie_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            },
+            {
+                "foreign": "categorie_id",
+                "foreign_table": "",
+                "table": "produit_categorie"
+            },
+            {
+                "foreign": "famille_id",
+                "foreign_table": "",
+                "table": "produit_famille"
+            }
+        ],
+        "columns": []
+    },
+    {
+        "model": "ProduitCategorie",
+        "table": "produit_categorie",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "ProduitFamille",
+        "table": "produit_famille",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "Periodicite",
+        "table": "periodicite",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "RegimeFiscal",
+        "table": "regime_fiscal",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "FormeJuridique",
+        "table": "forme_juridique",
+        "id": "id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "SecteurActivite",
+        "table": "secteur_activite",
+        "id": "secteur_activite_id",
+        "relations": [],
+        "columns": []
+    },
+    {
+        "model": "EntrepriseProfilDeRisque",
+        "table": "entreprise_profil_de_risque",
+        "id": "profil_de_risque_id",
+        "relations": [
+            {
+                "foreign": "entreprise_id",
+                "foreign_table": "",
+                "table": "entreprise"
+            }
+        ],
+        "columns": []
+    }
+]
