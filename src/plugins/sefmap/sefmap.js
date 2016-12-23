@@ -43,12 +43,14 @@ module.exports = class Sefmap {
      *
      */
     push (parameters) {
-        console.log ("---------------------------------------------------");
-        console.log ("src");
         // clone
         parameters = this._clone (parameters);
         // control
-        if (!parameters.hasOwnProperty ("infos")) {
+        if (!parameters.hasOwnProperty ("infos") || !parameters.infos) {
+            return false;
+        }
+        // control
+        if (!parameters.infos.hasOwnProperty ("tableName")) {
             return false;
         }
         // parameters
@@ -90,7 +92,11 @@ module.exports = class Sefmap {
      * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
      */
-    whoForeignWho (entity_1 , entity_2) {
+    whoForeignWho (parameters) {
+        // prameters
+        var entity_1 = parameters.entity_1;
+        var entity_2 = parameters.entity_2;
+        var foreign_key = parameters.foreign_key;
         // get
         var map = this._getMap ();
         // default
@@ -101,7 +107,7 @@ module.exports = class Sefmap {
         for (var i in map) {
             for (var j in map[i].relations) {
                 // control
-                if (map[i].table == entity_1 && entity_2 == map[i].relations[j].table) {
+                if (map[i].table == entity_1 && entity_2 == map[i].relations[j].table && map[i].relations[j].foreign == foreign_key) {
                     entity = this._cloneData (map[i]);
                     foreign = {
                         key : map[i].relations[j].foreign ,
@@ -114,7 +120,7 @@ module.exports = class Sefmap {
                     break;
                 }
                 // control
-                else if (map[i].table == entity_2 && entity_1 == map[i].relations[j].table) {
+                else if (map[i].table == entity_2 && entity_1 == map[i].relations[j].table && map[i].relations[j].foreign == foreign_key) {
                     entity = this._cloneData (map[i]);
                     foreign = {
                         key : map[i].relations[j].foreign ,
@@ -128,14 +134,21 @@ module.exports = class Sefmap {
                 }
             }
         }
-        // clean
-        delete entity.relations;
-        delete related.relations;
-        // return
-        return {
-            entity : entity ,
-            foreign : foreign ,
-            related : related ,
+        // control
+        if (entity == null || related == null || foreign == null) {
+            return false;
+        }
+        // control
+        else {
+            // clean
+            delete entity.relations;
+            delete related.relations;
+            // return
+            return {
+                entity : entity ,
+                foreign : foreign ,
+                related : related ,
+            }
         }
     }
 
